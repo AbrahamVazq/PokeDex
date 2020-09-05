@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A4772703250431F20055A596 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4772702250431F20055A596 /* AppDelegate.swift */; };
 		A4772705250431F20055A596 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4772704250431F20055A596 /* SceneDelegate.swift */; };
-		A4772707250431F20055A596 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4772706250431F20055A596 /* ViewController.swift */; };
 		A477270A250431F20055A596 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4772708250431F20055A596 /* Main.storyboard */; };
 		A477270D250431F20055A596 /* PokeDex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A477270B250431F20055A596 /* PokeDex.xcdatamodeld */; };
 		A477270F250431F90055A596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A477270E250431F90055A596 /* Assets.xcassets */; };
@@ -20,7 +19,6 @@
 		A47726FF250431F20055A596 /* PokeDex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeDex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4772702250431F20055A596 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4772704250431F20055A596 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A4772706250431F20055A596 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A4772709250431F20055A596 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A477270C250431F20055A596 /* PokeDex.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PokeDex.xcdatamodel; sourceTree = "<group>"; };
 		A477270E250431F90055A596 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -58,9 +56,12 @@
 		A4772701250431F20055A596 /* PokeDex */ = {
 			isa = PBXGroup;
 			children = (
+				A477271C2504388C0055A596 /* View */,
+				A477271B2504387C0055A596 /* WebServices */,
+				A477271A2504386F0055A596 /* Model */,
+				A4772719250438590055A596 /* GeneralFunctions */,
 				A4772702250431F20055A596 /* AppDelegate.swift */,
 				A4772704250431F20055A596 /* SceneDelegate.swift */,
-				A4772706250431F20055A596 /* ViewController.swift */,
 				A4772708250431F20055A596 /* Main.storyboard */,
 				A477270E250431F90055A596 /* Assets.xcassets */,
 				A4772710250431F90055A596 /* LaunchScreen.storyboard */,
@@ -68,6 +69,34 @@
 				A477270B250431F20055A596 /* PokeDex.xcdatamodeld */,
 			);
 			path = PokeDex;
+			sourceTree = "<group>";
+		};
+		A4772719250438590055A596 /* GeneralFunctions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GeneralFunctions;
+			sourceTree = "<group>";
+		};
+		A477271A2504386F0055A596 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A477271B2504387C0055A596 /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		A477271C2504388C0055A596 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A477270D250431F20055A596 /* PokeDex.xcdatamodeld in Sources */,
-				A4772707250431F20055A596 /* ViewController.swift in Sources */,
 				A4772703250431F20055A596 /* AppDelegate.swift in Sources */,
 				A4772705250431F20055A596 /* SceneDelegate.swift in Sources */,
 			);
