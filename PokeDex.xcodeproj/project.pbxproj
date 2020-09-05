@@ -15,6 +15,8 @@
 		A4772712250431F90055A596 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4772710250431F90055A596 /* LaunchScreen.storyboard */; };
 		A477271E25043B500055A596 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477271D25043B500055A596 /* Pokemon.swift */; };
 		A477272025043BA90055A596 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477271F25043BA90055A596 /* WebService.swift */; };
+		A477272225043F210055A596 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477272125043F210055A596 /* Sprite.swift */; };
+		A477272425043F680055A596 /* Pokemon_WS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477272325043F680055A596 /* Pokemon_WS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		A4772713250431F90055A596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A477271D25043B500055A596 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		A477271F25043BA90055A596 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		A477272125043F210055A596 /* Sprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
+		A477272325043F680055A596 /* Pokemon_WS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon_WS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			children = (
 				A477271C2504388C0055A596 /* View */,
 				A477271A2504386F0055A596 /* Model */,
+				A47727252504406A0055A596 /* Controller */,
 				A477271B2504387C0055A596 /* WebServices */,
 				A4772719250438590055A596 /* GeneralFunctions */,
 				A4772702250431F20055A596 /* AppDelegate.swift */,
@@ -86,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				A477271D25043B500055A596 /* Pokemon.swift */,
+				A477272125043F210055A596 /* Sprite.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -94,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				A477271F25043BA90055A596 /* WebService.swift */,
+				A477272325043F680055A596 /* Pokemon_WS.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -103,6 +110,13 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		A47727252504406A0055A596 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,7 +193,9 @@
 				A477270D250431F20055A596 /* PokeDex.xcdatamodeld in Sources */,
 				A477271E25043B500055A596 /* Pokemon.swift in Sources */,
 				A4772703250431F20055A596 /* AppDelegate.swift in Sources */,
+				A477272425043F680055A596 /* Pokemon_WS.swift in Sources */,
 				A477272025043BA90055A596 /* WebService.swift in Sources */,
+				A477272225043F210055A596 /* Sprite.swift in Sources */,
 				A4772705250431F20055A596 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,7 +272,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -310,7 +326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -324,15 +340,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T2SGY3LL4V;
 				INFOPLIST_FILE = PokeDex/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PokeDex;
+				PRODUCT_BUNDLE_IDENTIFIER = PokeDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -342,15 +361,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T2SGY3LL4V;
 				INFOPLIST_FILE = PokeDex/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.PokeDex;
+				PRODUCT_BUNDLE_IDENTIFIER = PokeDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
