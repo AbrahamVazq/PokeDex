@@ -13,6 +13,8 @@
 		A477270D250431F20055A596 /* PokeDex.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A477270B250431F20055A596 /* PokeDex.xcdatamodeld */; };
 		A477270F250431F90055A596 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A477270E250431F90055A596 /* Assets.xcassets */; };
 		A4772712250431F90055A596 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4772710250431F90055A596 /* LaunchScreen.storyboard */; };
+		A477271E25043B500055A596 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477271D25043B500055A596 /* Pokemon.swift */; };
+		A477272025043BA90055A596 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477271F25043BA90055A596 /* WebService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		A477270E250431F90055A596 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4772711250431F90055A596 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4772713250431F90055A596 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A477271D25043B500055A596 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		A477271F25043BA90055A596 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				A477271C2504388C0055A596 /* View */,
-				A477271B2504387C0055A596 /* WebServices */,
 				A477271A2504386F0055A596 /* Model */,
+				A477271B2504387C0055A596 /* WebServices */,
 				A4772719250438590055A596 /* GeneralFunctions */,
 				A4772702250431F20055A596 /* AppDelegate.swift */,
 				A4772704250431F20055A596 /* SceneDelegate.swift */,
@@ -81,6 +85,7 @@
 		A477271A2504386F0055A596 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A477271D25043B500055A596 /* Pokemon.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,6 +93,7 @@
 		A477271B2504387C0055A596 /* WebServices */ = {
 			isa = PBXGroup;
 			children = (
+				A477271F25043BA90055A596 /* WebService.swift */,
 			);
 			path = WebServices;
 			sourceTree = "<group>";
@@ -171,7 +177,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A477270D250431F20055A596 /* PokeDex.xcdatamodeld in Sources */,
+				A477271E25043B500055A596 /* Pokemon.swift in Sources */,
 				A4772703250431F20055A596 /* AppDelegate.swift in Sources */,
+				A477272025043BA90055A596 /* WebService.swift in Sources */,
 				A4772705250431F20055A596 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
