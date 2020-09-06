@@ -17,6 +17,10 @@
 		A477272025043BA90055A596 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477271F25043BA90055A596 /* WebService.swift */; };
 		A477272225043F210055A596 /* Sprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477272125043F210055A596 /* Sprite.swift */; };
 		A477272425043F680055A596 /* Pokemon_WS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477272325043F680055A596 /* Pokemon_WS.swift */; };
+		A477272725044F1E0055A596 /* PokedexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477272625044F1E0055A596 /* PokedexViewController.swift */; };
+		A4772729250450630055A596 /* Pokedex_WS.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4772728250450630055A596 /* Pokedex_WS.swift */; };
+		A477272B2504514A0055A596 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A477272A2504514A0055A596 /* Functions.swift */; };
+		A477272D2504A4770055A596 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A477272C2504A4770055A596 /* LoadingCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		A477271F25043BA90055A596 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
 		A477272125043F210055A596 /* Sprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sprite.swift; sourceTree = "<group>"; };
 		A477272325043F680055A596 /* Pokemon_WS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon_WS.swift; sourceTree = "<group>"; };
+		A477272625044F1E0055A596 /* PokedexViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewController.swift; sourceTree = "<group>"; };
+		A4772728250450630055A596 /* Pokedex_WS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex_WS.swift; sourceTree = "<group>"; };
+		A477272A2504514A0055A596 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		A477272C2504A4770055A596 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 		A4772719250438590055A596 /* GeneralFunctions */ = {
 			isa = PBXGroup;
 			children = (
+				A477272A2504514A0055A596 /* Functions.swift */,
 			);
 			path = GeneralFunctions;
 			sourceTree = "<group>";
@@ -100,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				A477271F25043BA90055A596 /* WebService.swift */,
+				A4772728250450630055A596 /* Pokedex_WS.swift */,
 				A477272325043F680055A596 /* Pokemon_WS.swift */,
 			);
 			path = WebServices;
@@ -108,6 +118,7 @@
 		A477271C2504388C0055A596 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A477272C2504A4770055A596 /* LoadingCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -115,6 +126,7 @@
 		A47727252504406A0055A596 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A477272625044F1E0055A596 /* PokedexViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -179,6 +191,7 @@
 			files = (
 				A4772712250431F90055A596 /* LaunchScreen.storyboard in Resources */,
 				A477270F250431F90055A596 /* Assets.xcassets in Resources */,
+				A477272D2504A4770055A596 /* LoadingCell.xib in Resources */,
 				A477270A250431F20055A596 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -193,8 +206,11 @@
 				A477270D250431F20055A596 /* PokeDex.xcdatamodeld in Sources */,
 				A477271E25043B500055A596 /* Pokemon.swift in Sources */,
 				A4772703250431F20055A596 /* AppDelegate.swift in Sources */,
+				A477272B2504514A0055A596 /* Functions.swift in Sources */,
 				A477272425043F680055A596 /* Pokemon_WS.swift in Sources */,
 				A477272025043BA90055A596 /* WebService.swift in Sources */,
+				A4772729250450630055A596 /* Pokedex_WS.swift in Sources */,
+				A477272725044F1E0055A596 /* PokedexViewController.swift in Sources */,
 				A477272225043F210055A596 /* Sprite.swift in Sources */,
 				A4772705250431F20055A596 /* SceneDelegate.swift in Sources */,
 			);
@@ -349,7 +365,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PokeDex;
+				PRODUCT_BUNDLE_IDENTIFIER = XibalbaMovile.PokeDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -370,7 +386,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = PokeDex;
+				PRODUCT_BUNDLE_IDENTIFIER = XibalbaMovile.PokeDex;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
