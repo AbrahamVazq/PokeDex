@@ -9,6 +9,7 @@
 import UIKit
 
 class PokedexViewController: UIViewController {
+    
     //MARK: - O U T L E T S
     @IBOutlet weak var tblVwPokemon: UITableView!{
         didSet{
@@ -16,14 +17,19 @@ class PokedexViewController: UIViewController {
             tblVwPokemon.dataSource = self
         }
     }
+    @IBOutlet weak var imgPokeSprite: UIImageView!
+    
     //MARK: - E N U M
     enum WebStates {
         case loading
         case finished
     }
+    
     //MARK: - V A R I A B L E S
-    private var arrPokemon: [Pokemon]?
     private var pokedexWS:  Pokedex_WS?
+    private var pokemonWS:  Pokemon_WS?
+    private var arrPokemon: [Pokemon]?
+    private var webSatate : WebStates = .loading
     private var arrPokemonsFiltered : [Pokemon] = [Pokemon]()
     private let searchController = UISearchController(searchResultsController: nil)
     private var isSearchEmpty : Bool{
@@ -32,7 +38,6 @@ class PokedexViewController: UIViewController {
     private var isFiltering: Bool {
         return searchController.isActive && !isSearchEmpty
     }
-    private var webSatate : WebStates = .loading
     
     //MARK: - O V E R R I D E · P R O P E R T I E S
     override func viewDidLoad() {
@@ -48,6 +53,7 @@ class PokedexViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.title = NSLocalizedString("Pokémon", comment: "Titulo de Vista")
         getPokedexEntries()
+        getPokeSprites(WithNumber: 1)
     }
     
     //MARK: - F U N C T I O N S
@@ -66,7 +72,6 @@ class PokedexViewController: UIViewController {
         pokedexWS = Pokedex_WS()
         pokedexWS?.getPokedex(withCompletion: {[weak self] (arrPokemonResponse, strError) in
             guard let self = self else { return }
-            
             if strError.count > 0{
                 self.present(createSimpleAlertView(messge: strError), animated: true)
             }else{
@@ -74,21 +79,31 @@ class PokedexViewController: UIViewController {
                 self.webSatate = .finished
                 self.tblVwPokemon.reloadData()
             }
-            
         })
     }
     
+    private func getPokeSprites(WithNumber number:Int){
+        pokemonWS = Pokemon_WS(iIndex: number)
+        pokemonWS?.getSprites(WithCompletionHandler: { (spriteResponse, error) in
+            let strSprite: String = spriteResponse.strUrlDefaultFront ?? ""
+            self.imgPokeSprite.downloaded(fromLink: strSprite)
+        })
+    }
     
     //MARK: - B U T T O N S · A C T I O N
-    
-    
     //MARK: - N A V I G A T I O N
-    
 }
 
 // MARK: - EXT -> T A B L E V I E W · D E L E G A T E
 extension PokedexViewController: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let currentCell = (tableView.cellForRow(at: indexPath) ?? UITableViewCell()) as UITableViewCell
+        let strOnCell: String = currentCell.textLabel?.text ?? ""
+        let strNumber = strOnCell.split(separator: "-")
+        let strNumero:String = String(String(strNumber[0]).dropLast())
+        let numero: Int = Int(strNumero) ?? 0
+        getPokeSprites(WithNumber: numero)
+    }
 }
 
 // MARK: - EXT -> T A B L E V I E W · D A T A S O U R C E
@@ -111,10 +126,11 @@ extension PokedexViewController: UITableViewDataSource{
             if let arrPokemons = arrPokemon, arrPokemons.count > 0{
                 let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: TableViewCellsIdentifiers.simpleCell.rawValue, for: indexPath)
                 let pokemon = isFiltering ? arrPokemonsFiltered[indexPath.row] : arrPokemons[indexPath.row]
-                cell.textLabel?.text = "\(pokemon.noPokedex)- \(pokemon.strPokeName?.capitalized ?? "")"
+                cell.textLabel?.text = "\(pokemon.noPokedex) - \(pokemon.strPokeName?.capitalized ?? "")"
                 return cell
             }
         case .loading:
+            self.tblVwPokemon.separatorStyle = UITableViewCell.SeparatorStyle.none
             let cell = tableView.dequeueReusableCell(withIdentifier:TableViewCellsIdentifiers.loadingCell.rawValue, for: indexPath)
             if let spinner = cell.viewWithTag(100) as? UIActivityIndicatorView{
                 spinner.startAnimating()
@@ -126,7 +142,7 @@ extension PokedexViewController: UITableViewDataSource{
 }
 
 // MARK: - EXT -> S E A T C H · R E S U L T · U P D A T I N G
-extension PokedexViewController : UISearchResultsUpdating{
+extension PokedexViewController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         searchPokemon(withText: searchBar.text ?? "")
@@ -138,5 +154,26 @@ extension PokedexViewController : UISearchResultsUpdating{
             return (pokemon.strPokeName?.lowercased().contains(strText.lowercased()) ?? false)
         })
         tblVwPokemon.reloadData()
+    }
+}
+
+extension UIImageView {
+    func downloaded(fromUrl url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+    func downloaded(fromLink link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(fromUrl: url, contentMode: mode)
     }
 }
