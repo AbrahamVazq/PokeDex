@@ -38,6 +38,7 @@ class PokedexViewController: UIViewController {
     private var isFiltering: Bool {
         return searchController.isActive && !isSearchEmpty
     }
+    private var downloadTask : URLSessionDownloadTask? = nil
     
     //MARK: - O V E R R I D E · P R O P E R T I E S
     override func viewDidLoad() {
@@ -83,10 +84,14 @@ class PokedexViewController: UIViewController {
     }
     
     private func getPokeSprites(WithNumber number:Int){
+        downloadTask?.cancel()
         pokemonWS = Pokemon_WS(iIndex: number)
         pokemonWS?.getSprites(WithCompletionHandler: { (spriteResponse, error) in
             let strSprite: String = spriteResponse.strUrlDefaultFront ?? ""
-            self.imgPokeSprite.downloaded(fromLink: strSprite)
+            if let url = URL(string: strSprite){
+                self.downloadTask = self.imgPokeSprite.loadImage(url: url)
+            }
+            
         })
     }
     
@@ -97,12 +102,10 @@ class PokedexViewController: UIViewController {
 // MARK: - EXT -> T A B L E V I E W · D E L E G A T E
 extension PokedexViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let currentCell = (tableView.cellForRow(at: indexPath) ?? UITableViewCell()) as UITableViewCell
-        let strOnCell: String = currentCell.textLabel?.text ?? ""
-        let strNumber = strOnCell.split(separator: "-")
-        let strNumero:String = String(String(strNumber[0]).dropLast())
-        let numero: Int = Int(strNumero) ?? 0
-        getPokeSprites(WithNumber: numero)
+        if let arrPokemons = arrPokemon, arrPokemons.count > 0{
+            let pokemon : Pokemon = isFiltering ? arrPokemonsFiltered[indexPath.row] : arrPokemons[indexPath.row]
+            getPokeSprites(WithNumber: pokemon.noPokedex)
+        }
     }
 }
 
@@ -154,26 +157,5 @@ extension PokedexViewController: UISearchResultsUpdating{
             return (pokemon.strPokeName?.lowercased().contains(strText.lowercased()) ?? false)
         })
         tblVwPokemon.reloadData()
-    }
-}
-
-extension UIImageView {
-    func downloaded(fromUrl url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-            }
-        }.resume()
-    }
-    func downloaded(fromLink link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloaded(fromUrl: url, contentMode: mode)
     }
 }
